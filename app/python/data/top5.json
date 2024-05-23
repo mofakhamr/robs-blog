@@ -1,0 +1,58 @@
+[
+    {
+        "Year": 2016,
+        "Asda stores limited": 165766608.0,
+        "Ocado retail limited": 128388732.0,
+        "Tesco stores ltd": 637181382.0,
+        "The co-operative group": 125929333.0,
+        "Wm morrison supermarkets plc": 191508650.0
+    },
+    {
+        "Year": 2017,
+        "Asda stores limited": 192973018.0,
+        "Ocado retail limited": 140793060.0,
+        "Tesco stores ltd": 332741451.0,
+        "The co-operative group": 120629924.0,
+        "Wm morrison supermarkets plc": 183271200.0
+    },
+    {
+        "Year": 2018,
+        "Asda stores limited": 106896430.0,
+        "Ocado retail limited": 156311434.0,
+        "Tesco stores ltd": 121749784.0,
+        "The co-operative group": 112602662.0,
+        "Wm morrison supermarkets plc": 65071608.0
+    },
+    {
+        "Year": 2019,
+        "Asda stores limited": 20114385.0,
+        "Ocado retail limited": 163280210.0,
+        "Tesco stores ltd": 42117456.0,
+        "The co-operative group": 106578322.0,
+        "Wm morrison supermarkets plc": 55449507.0
+    },
+    {
+        "Year": 2020,
+        "Asda stores limited": 64719465.0,
+        "Ocado retail limited": 112600000.0,
+        "Tesco stores ltd": 11889176.0,
+        "The co-operative group": 95462928.0,
+        "Wm morrison supermarkets plc": 94946130.0
+    },
+    {
+        "Year": 2021,
+        "Asda stores limited": 5661199.0,
+        "Ocado retail limited": 202142190.0,
+        "Tesco stores ltd": 1442122.0,
+        "The co-operative group": 104375036.0,
+        "Wm morrison supermarkets plc": 59565625.0
+    },
+    {
+        "Year": 2022,
+        "Asda stores limited": 121556.0,
+        "Ocado retail limited": 192014691.0,
+        "Tesco stores ltd": 0.0,
+        "The co-operative group": 69115646.0,
+        "Wm morrison supermarkets plc": 57179297.0
+    }
+]
