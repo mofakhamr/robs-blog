@@ -18,8 +18,7 @@ import { channel } from 'diagnostics_channel';
 function compactNumberFormatter(value: number) {
   return Intl.NumberFormat('en', { notation: "compact" }).format(value)
 }
-const valueFormatter = (value: number) =>
-  `${Intl.NumberFormat('en').format(value).toString()}`;
+const valueFormatter = (value: number) => (typeof value === 'string') ? value : `${Intl.NumberFormat('en').format(value).toString()}`;
 
 
 // work out the dimension names, skipping the index
@@ -52,7 +51,8 @@ export default function ExampleCharts() {
   let allBagsTotal: number = 0;
   let plasticTotal: number = 0;
   let cardData: any = dataAnnualTotals.map((item: any) => {
-    const sumValues = Object.values(item).reduce((a, b) => a + b, 0) - item.Year;
+    const curSum: any = Object.values(item).reduce((a: any, b: any) => a + b, 0);
+    const sumValues: any = curSum - item.Year;
     allBagsTotal += sumValues;
     plasticTotal += item[plastic_idx];
     // Calculate
@@ -83,6 +83,7 @@ export default function ExampleCharts() {
     totalYears: dataAnnualTotals[last]['Year'] - dataAnnualTotals[0]['Year'],
   };
 
+
   return (
     <div className="lg:mx-32 lg mt-5 rounded-lg p-4 sm:p-10 bg-white dark:bg-gray-950">
 
@@ -111,11 +112,6 @@ export default function ExampleCharts() {
             onValueChange={(v) => {
               setValue(v);
             }}
-          />
-          <CodeBlock
-            source={JSON.stringify(value, null, 2)}
-            variant="empty"
-            className="mt-8"
           />
         </div>
       </div>

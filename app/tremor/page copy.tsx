@@ -76,11 +76,6 @@ export default function BarChartUsageExampleWithClickEvent() {
         yAxisWidth={30}
         onValueChange={(v) => setValue(v)}
       />
-      <CodeBlock
-        source={JSON.stringify(value, null, 2)}
-        variant="empty"
-        className="mt-8"
-      />
     </>
   );
 }
