@@ -15,7 +15,9 @@ export default function Header() {
   const mainMenu = [
     {
       name: "Projects", path: "#", children: [
-        { name: "Introduction", path: "/notable" },
+        { name: "Introduction", path: "/intro" },
+        { name: "Tremor", path: "/tremor" },
+        { name: "Setup", path: "/setup" },
       ]
     },
     { name: "Contact", path: "/contact" },

@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://www.data.gov.uk/
+HostUrl=https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/Waste/Single_use_carrier_bag_England_data_2016_17_to_2022_23.csv
