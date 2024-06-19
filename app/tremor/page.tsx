@@ -73,7 +73,7 @@ export default function ExampleCharts() {
     sumTotal: allBagsTotal,
     sumPlastic: plasticTotal,
     plasticReduction: dataAnnualTotals[0][plastic_idx] - dataAnnualTotals[last][plastic_idx],
-    plasticReductionPc: ((dataAnnualTotals[0][plastic_idx] - dataAnnualTotals[last][plastic_idx]) / dataAnnualTotals[0][plastic_idx]).toFixed(2),
+    plasticReductionPc: ((dataAnnualTotals[0][plastic_idx] - dataAnnualTotals[last][plastic_idx]) / dataAnnualTotals[0][plastic_idx] * 100).toFixed(2) ,
     totalYears: dataAnnualTotals[last]['Year'] - dataAnnualTotals[0]['Year'],
   };
 
@@ -86,7 +86,7 @@ export default function ExampleCharts() {
         className='hyperlink'
       >data.defra.gov.uk</Link></p>
       <p>In the period <span className='highlight'>{summaryData.firstYear} to {summaryData.lastYear}</span>: companies have reported a total of <span className='highlight'>{valueFormatter(summaryData.sumPlastic)} ({compactFormatter(summaryData.sumPlastic)})</span> single-use plastic bags being distributed.</p>
-      <p>The annual distribution is now <span className='highlight'>{valueFormatter(summaryData.lastValue)} ({compactFormatter(summaryData.lastValue)})</span> a decrease of <span className='highlight'>{`${valueFormatter(summaryData.plasticReduction)}`} ({`${compactFormatter(summaryData.plasticReduction)}`}) or {summaryData.plasticReductionPc * 100}%</span></p>
+      <p>The annual distribution is now <span className='highlight'>{valueFormatter(summaryData.lastValue)} ({compactFormatter(summaryData.lastValue)})</span> a decrease of <span className='highlight'>{`${valueFormatter(summaryData.plasticReduction)}`} ({`${compactFormatter(summaryData.plasticReduction)}`}) or {summaryData.plasticReductionPc}%</span></p>
 
       {/* YoY Cards */}
       <MultiCards

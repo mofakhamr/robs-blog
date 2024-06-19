@@ -61,6 +61,7 @@ body {
 
 .highlight {
   font-weight: 600;
+  font-family: monospace, monospace;
 }
 
 .br {
