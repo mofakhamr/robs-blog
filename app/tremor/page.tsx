@@ -84,8 +84,8 @@ export default function ExampleCharts() {
       <p>Source: <Link
         href={"https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/Waste/Single_use_carrier_bag_England_data_2016_17_to_2022_23.csv"}
         className='hyperlink'
-      >data.defra.gov.uk</Link></p>
-      <p>In the period <span className='highlight'>{summaryData.firstYear} to {summaryData.lastYear}</span>: companies have reported a total of <span className='highlight'>{valueFormatter(summaryData.sumPlastic)} ({compactFormatter(summaryData.sumPlastic)})</span> single-use plastic bags being distributed.</p>
+      >data.defra.gov.uk</Link> <span className='text-xs'>[CSV download]</span></p>
+      <p>In the period <span className='highlight'>{summaryData.firstYear} to {summaryData.lastYear}</span>: UK companies have reported a total of <span className='highlight'>{valueFormatter(summaryData.sumPlastic)} ({compactFormatter(summaryData.sumPlastic)})</span> single-use plastic bags being distributed.</p>
       <p>The annual distribution is now <span className='highlight'>{valueFormatter(summaryData.lastValue)} ({compactFormatter(summaryData.lastValue)})</span> a decrease of <span className='highlight'>{`${valueFormatter(summaryData.plasticReduction)}`} ({`${compactFormatter(summaryData.plasticReduction)}`}) or {summaryData.plasticReductionPc}%</span></p>
 
       {/* YoY Cards */}
