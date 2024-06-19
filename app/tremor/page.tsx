@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { CodeBlock } from 'react-code-blocks';
 
 import CardHighlight from '@/components/charts/cardHighlight';
+import MultiCards from '@/components/charts/multipleCards';
 import SimpleTable from '@/components/charts/simpleTable';
 
 import { Card, LineChart } from '@tremor/react';
@@ -13,12 +14,10 @@ import dataTopFive from '../python/data/top5.json';
 import dataTopFiveTotals from '../python/data/top5_totals.json';
 import dataAnnualTotals from '../python/data/annual_totals.json';
 import { channel } from 'diagnostics_channel';
+import Link from 'next/link';
 
-// Format large numbers as compacted.
-function compactNumberFormatter(value: number) {
-  return Intl.NumberFormat('en', { notation: "compact" }).format(value)
-}
 const valueFormatter = (value: number) => (typeof value === 'string') ? value : `${Intl.NumberFormat('en').format(value).toString()}`;
+const compactFormatter = (value: number) => (typeof value === 'string') ? value : `${Intl.NumberFormat('en', { notation: 'compact' }).format(value).toString()}`;
 
 
 // work out the dimension names, skipping the index
@@ -28,11 +27,6 @@ const vals = data[0];
 let keys = Object.keys(vals);
 keys.shift();
 
-// const indexName = 'name';
-// const data = chartdata;
-// const vals = data[0];
-// let keys = Object.keys(vals);
-// keys.shift();
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
@@ -59,7 +53,7 @@ export default function ExampleCharts() {
     const itemChange = sumValues - (prevSum ? prevSum : sumValues);
     const itemChangeDisplay = [
       (itemChange > 0) ? '+' : '',
-      (itemChange != 0) ? compactNumberFormatter(itemChange) : '',
+      (itemChange != 0) ? compactFormatter(itemChange) : '',
     ]
     prevSum = sumValues;
     return {
@@ -79,69 +73,46 @@ export default function ExampleCharts() {
     sumTotal: allBagsTotal,
     sumPlastic: plasticTotal,
     plasticReduction: dataAnnualTotals[0][plastic_idx] - dataAnnualTotals[last][plastic_idx],
-    plasticReductionPc: ((dataAnnualTotals[0][plastic_idx] - dataAnnualTotals[last][plastic_idx]) / dataAnnualTotals[0][plastic_idx]).toFixed(2),
+    plasticReductionPc: ((dataAnnualTotals[0][plastic_idx] - dataAnnualTotals[last][plastic_idx]) / dataAnnualTotals[0][plastic_idx] * 100).toFixed(2) ,
     totalYears: dataAnnualTotals[last]['Year'] - dataAnnualTotals[0]['Year'],
   };
 
 
   return (
     <div className="lg:mx-32 lg mt-5 rounded-lg p-4 sm:p-10 bg-white dark:bg-gray-950">
+      <h1>Single use plastic bag usage</h1>
+      <p>Source: <Link
+        href={"https://s3.eu-west-1.amazonaws.com/data.defra.gov.uk/Waste/Single_use_carrier_bag_England_data_2016_17_to_2022_23.csv"}
+        className='hyperlink'
+      >data.defra.gov.uk</Link> <span className='text-xs'>[CSV download]</span></p>
+      <p>In the period <span className='highlight'>{summaryData.firstYear} to {summaryData.lastYear}</span>: UK companies have reported a total of <span className='highlight'>{valueFormatter(summaryData.sumPlastic)} ({compactFormatter(summaryData.sumPlastic)})</span> single-use plastic bags being distributed.</p>
+      <p>The annual distribution is now <span className='highlight'>{valueFormatter(summaryData.lastValue)} ({compactFormatter(summaryData.lastValue)})</span> a decrease of <span className='highlight'>{`${valueFormatter(summaryData.plasticReduction)}`} ({`${compactFormatter(summaryData.plasticReduction)}`}) or {summaryData.plasticReductionPc}%</span></p>
 
-      <div id="plastic" className='flex justify-between'>
-        {/* Summary Card */}
-        <div className='w-1/6 mr-5'>
-          <CardHighlight
-            title={`Total plastic bags issued since ${summaryData.firstYear}`}
-            headlineValue={Intl.NumberFormat('en').format(summaryData.sumPlastic)}
-            difference={`-${compactNumberFormatter(summaryData.plasticReduction)}`}
-            differencePercent={`-${summaryData.plasticReductionPc}%`}
-            differencePeriod={`Past ${summaryData.totalYears} years`}
-          />
-        </div>
+      {/* YoY Cards */}
+      <MultiCards
+        title={""}
+        data={cardData}
+        dataFormatter={compactFormatter}
+      />
 
-        {/* Company by year - Plastic only */}
-        <div className='w-5/6'>
-          <BarChart
-            className="mt-6 w-5/6"
-            data={data}
-            index={indexName}
-            categories={keys}
-            colors={['gray', 'blue', 'green', 'orange', 'pink', 'purple', 'lightgreen', 'lightblue', 'black']}
-            yAxisWidth={30}
-            valueFormatter={valueFormatter}
-            onValueChange={(v) => {
-              setValue(v);
-            }}
-          />
-        </div>
+      {/* Company by year - Plastic only */}
+      <div className=''>
+        <BarChart
+          className="mt-6"
+          data={data}
+          index={indexName}
+          categories={keys}
+          colors={['gray', 'blue', 'green', 'orange', 'pink', 'purple', 'lightgreen', 'lightblue', 'black']}
+          yAxisWidth={85}
+          valueFormatter={valueFormatter}
+          onValueChange={(v) => {
+            setValue(v);
+          }}
+        />
       </div>
 
       <div id="allbags" className='mt-10'>
-        {/* YoY Cards */}
-        <div id="yoy-cards" className='flex justify-center'>
-          <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-8">
-            {cardData.map((item: any) => (
-              <Card key={item.name}>
-                <p className="font-medium text-gray-500">{item.name}</p>
-                <div className="mt-2 flex items-baseline space-x-2.5">
-                  <p className="text-3xl leading-9 font-semibold ">
-                    {compactNumberFormatter(item.stat)}
-                  </p>
-                  <span
-                    className={classNames(
-                      item.changeType === 'positive'
-                        ? 'text-emerald-700 dark:text-emerald-500'
-                        : 'text-red-700 dark:text-red-500',
-                      'text-tremor-default font-medium',
-                    )}
-                  >
-                    {item.change}
-                  </span>
-                </div>
-              </Card>
-            ))}
-          </div>
-        </div>
+
 
         {/* Totals chart */}
         <LineChart
@@ -150,7 +121,7 @@ export default function ExampleCharts() {
           categories={keys}
           colors={['green', 'purple', 'red', 'blue', 'orange']}
           valueFormatter={valueFormatter}
-          yAxisWidth={55}
+          yAxisWidth={85}
           onValueChange={() => { }}
           className="mt-6 hidden h-96 sm:block"
         />
