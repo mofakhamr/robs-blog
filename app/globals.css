@@ -18,12 +18,9 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
+  background: linear-gradient(to bottom,
       transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+      rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
 @layer utilities {
@@ -37,12 +34,14 @@ body {
   p {
     @apply mb-3;
   }
+
   h1 {
     @apply font-extrabold;
     @apply mb-4;
     @apply text-2xl;
     @apply md:text-4xl;
   }
+
   h2 {
     @apply font-bold;
     @apply mb-2;
@@ -50,22 +49,45 @@ body {
     @apply md:text-2xl;
 
   }
+
+  .hyperlink {
+    @apply text-blue-600 underline
+  }
+
+  .hyperlink:visited {
+    @apply text-purple-600
+  }
+}
+
+.highlight {
+  font-weight: 600;
+}
+
+.br {
+  display: block;
 }
 
 .mainmenu {
   display: block;
-  margin-top:1;
+  margin-top: 1;
   color: #dcdcdc;
 }
+
 .mainmenu:hover {
   color: white;
-  }
+}
 
 .arrow {
   display: inline-block;
 }
+
 .arrclosed {
   transform: rotate(180deg);
   -webkit-transform: rotate(180deg);
 }
 
+#yoy-cards>div>div:nth-child(8) {
+  background-color: #e9e9e9;
+  border-color: #4a5d5e;
+  border-block-width: 2px;
+}
