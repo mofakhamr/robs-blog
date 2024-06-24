@@ -14,10 +14,9 @@ export default function Header() {
   // Define the menu items for easier rendering
   const mainMenu = [
     {
-      name: "Projects", path: "#", children: [
-        { name: "Introduction", path: "/intro" },
-        { name: "Tremor", path: "/tremor" },
-        { name: "Setup", path: "/setup" },
+      name: "Pages", path: "#", children: [
+        { name: "Charts", path: "/charts" },
+        { name: "Jupyter Setup", path: "/jupyter-setup" },
       ]
     },
     { name: "Contact", path: "/contact" },
@@ -93,7 +92,7 @@ export default function Header() {
               return <div key={i}>
                 <a href={item.path}
                   onClick={() => handleMenuItem(menuId.toString(), `arrow-id-${i}`)}
-                  className='mainmenu mt-1 sm:mt-16 px-2 py-1 sm:mt-0 sm:ml-2'>
+                  className='mainmenu mt-1 sm:mt-16 px-2 py-1 sm:ml-2'>
                   {item.name}
                   {hasChildren && hasChildren}
                 </a>
