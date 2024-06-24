@@ -82,7 +82,6 @@ export default function ExampleCharts() {
 
       {/* YoY Cards */}
       <MultiCards
-        title={""}
         data={cardData}
         dataFormatter={compactFormatter}
       />
@@ -131,7 +130,6 @@ export default function ExampleCharts() {
 
         {/* Totals table */}
         <SimpleTable
-          title={""}
           headers={Object.keys(dataTopFiveTotals[0])}
           rows={dataTopFiveTotals}
           keyIndex={"Company name"}
