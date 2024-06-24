@@ -2,8 +2,7 @@
 
 import React from 'react';
 import { useEffect } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
-import { AppProps } from 'next/app';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 // unused props not linting: { Component, pageProps }: AppProps
 const GoogleAnalytics = () => {

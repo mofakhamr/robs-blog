@@ -1,13 +1,12 @@
 import Image from "next/image";
 
 export default function Home() {
-  const title = "A spyglass that I created in Powerpoint, because I needed some imagery"
   return (
     <main className="z-10 flex min-h-screen w-full flex-col items-center justify-center py-32">
       <div className="mx-2 sm:mx-4 lg:mx-32 xl:mx-64">
         <h1 className="">about me</h1>
-        <p className="italic text-lg font-semibold text-slate-400">// &nbsp; Stoic &nbsp; // &nbsp; OCD &nbsp; // &nbsp; Londoner</p>
-        <h2 className="text-slate-500">what I'm like</h2>
+        <p className="italic text-lg font-semibold text-slate-400">{"// &nbsp; Stoic &nbsp; // &nbsp; OCD &nbsp; // &nbsp; Londoner"}</p>
+        <h2 className="text-slate-500">what I&apos;m like</h2>
         <ul className="about-list text-slate-600">
           <li>I've worked in IT for over 21 years and have been working in software development for the past 15 years.</li>
           <li>I naturally progressed into a leadership role, being an outspoken full-stack developer who's passionate about the products they build.</li>
@@ -21,8 +20,8 @@ export default function Home() {
         </ul>
         <div className="flex justify-center items-center">
           <Image
-            alt={"A spyglass that I created in Powerpoint, because I needed some imagery"}
-            title={"A spyglass that I created in Powerpoint, because I needed some imagery"}
+            alt={"A Spyglass icon"}
+            title={"I created this solely in Powerpoint, because I felt it needed some imagery"}
             src={"/pages/spyglass.png"}
             width={160}
             height={160}

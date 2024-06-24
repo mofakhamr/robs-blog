@@ -1,6 +1,5 @@
 'use client'
-
-import { Card } from '@tremor/react';
+import React from "react";
 
 interface Props {
   title: string;

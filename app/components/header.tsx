@@ -1,8 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import React, { useState } from "react";
-
+import React from "react";
 
 // Define the Header component
 export default function Header() {
@@ -54,8 +53,8 @@ export default function Header() {
             className="dark-invert text-white m-2"
             src="/logo.png"
             alt="Main Logo"
-            width={166}
-            height={42}
+            width={256}
+            height={66}
             priority
           /></a>
         </div>

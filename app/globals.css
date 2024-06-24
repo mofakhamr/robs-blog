@@ -109,7 +109,7 @@ body {
 }
 
 /* › ♦ ➽ ➲ ➢*/
-li::before {
+.about-list li::before {
   content: "»";
   padding-right: 0.85rem;
   color: #424c5b;

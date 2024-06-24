@@ -1,14 +1,14 @@
 'use client'
 
 import { Card } from '@tremor/react';
+import React from "react";
 
 interface Props {
-  title: string;
   data: [];
   dataFormatter: Function;
 }
 
-const MultiCards: React.FC<Props> = ({ title, data, dataFormatter }) => {
+const MultiCards: React.FC<Props> = ({ data, dataFormatter }) => {
   return (
     <div id="yoy-cards" className='flex justify-center'>
     <div className="grid grid-cols-2 gap-3 sm:grid-cols-2 lg:grid-cols-4 2xl:grid-cols-8">
