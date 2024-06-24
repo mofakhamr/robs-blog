@@ -1,19 +1,15 @@
 "use client"
 import { BarChart, EventProps } from '@tremor/react';
 import { useState } from 'react';
-import { CodeBlock } from 'react-code-blocks';
 
-import CardHighlight from '@/components/charts/cardHighlight';
 import MultiCards from '@/components/charts/multipleCards';
 import SimpleTable from '@/components/charts/simpleTable';
 
-import { Card, LineChart } from '@tremor/react';
-
+import { LineChart } from '@tremor/react';
 
 import dataTopFive from '../python/data/top5.json';
 import dataTopFiveTotals from '../python/data/top5_totals.json';
 import dataAnnualTotals from '../python/data/annual_totals.json';
-import { channel } from 'diagnostics_channel';
 import Link from 'next/link';
 
 const valueFormatter = (value: number) => (typeof value === 'string') ? value : `${Intl.NumberFormat('en').format(value).toString()}`;
@@ -27,13 +23,9 @@ const vals = data[0];
 let keys = Object.keys(vals);
 keys.shift();
 
-
-function classNames(...classes: any) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function ExampleCharts() {
-  const [value, setValue] = useState<EventProps>(null);
+  // eslint-disable-next-line no-unused-vars
+  const [v, setValue] = useState<EventProps>(null);
 
   // Let's do some counting.
   const plastic_idx = 'Single use plastic bags';
@@ -90,7 +82,6 @@ export default function ExampleCharts() {
 
       {/* YoY Cards */}
       <MultiCards
-        title={""}
         data={cardData}
         dataFormatter={compactFormatter}
       />
@@ -139,7 +130,6 @@ export default function ExampleCharts() {
 
         {/* Totals table */}
         <SimpleTable
-          title={""}
           headers={Object.keys(dataTopFiveTotals[0])}
           rows={dataTopFiveTotals}
           keyIndex={"Company name"}

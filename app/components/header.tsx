@@ -1,8 +1,7 @@
 'use client'
 
 import Image from "next/image";
-import React, { useState } from "react";
-
+import React from "react";
 
 // Define the Header component
 export default function Header() {
@@ -14,10 +13,9 @@ export default function Header() {
   // Define the menu items for easier rendering
   const mainMenu = [
     {
-      name: "Projects", path: "#", children: [
-        { name: "Introduction", path: "/intro" },
-        { name: "Tremor", path: "/tremor" },
-        { name: "Setup", path: "/setup" },
+      name: "Pages", path: "#", children: [
+        { name: "Charts", path: "/charts" },
+        { name: "Jupyter Setup", path: "/jupyter-setup" },
       ]
     },
     { name: "Contact", path: "/contact" },
@@ -55,8 +53,8 @@ export default function Header() {
             className="dark-invert text-white m-2"
             src="/logo.png"
             alt="Main Logo"
-            width={166}
-            height={42}
+            width={256}
+            height={66}
             priority
           /></a>
         </div>
@@ -93,7 +91,7 @@ export default function Header() {
               return <div key={i}>
                 <a href={item.path}
                   onClick={() => handleMenuItem(menuId.toString(), `arrow-id-${i}`)}
-                  className='mainmenu mt-1 sm:mt-16 px-2 py-1 sm:mt-0 sm:ml-2'>
+                  className='mainmenu mt-1 sm:mt-16 px-2 py-1 sm:ml-2'>
                   {item.name}
                   {hasChildren && hasChildren}
                 </a>

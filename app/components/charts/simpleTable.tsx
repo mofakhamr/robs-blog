@@ -8,17 +8,16 @@ import {
   TableHeaderCell,
   TableRow,
 } from '@tremor/react';
+import React from "react";
 
 interface Props {
-  title: string;
   headers: string[];
   rows: object[];
   keyIndex: string;
   formatter: Function;
 }
-function valueFormatter(value: any) { return value }
-const SimpleTable: React.FC<Props> = ({ title, headers, rows, keyIndex, formatter }) => {
-  console.log('rows', headers);
+
+const SimpleTable: React.FC<Props> = ({ headers, rows, keyIndex, formatter }) => {
   return (
     <>
       <Table className="mt-8">

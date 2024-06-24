@@ -1,11 +1,11 @@
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
+import React from "react";
 
 import Header from "@/components/header";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 import Script from 'next/script'
 
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   referrer: 'origin-when-cross-origin',
   keywords: ['Next.js', 'React', 'JavaScript'],
   authors: [{ name: 'Robin M', url: 'https://nextjs.org' }],
-  creator: 'Robin Mofakham',
+  creator: 'Robin M',
   publisher: 'Robin',
   formatDetection: {
     email: false,
@@ -58,7 +58,7 @@ export default function RootLayout({
             }}
           />
       </head>
-      <body className={inter.className}>
+      <body>
       <Header />
 
         {/* Include the Header component */}
