@@ -5,6 +5,8 @@ import React from "react";
 
 import Header from "@/components/header";
 
+import { VerticalNav } from "@/components/verticalNav"
+
 // const inter = Inter({ subsets: ["latin"] });
 
 import Script from 'next/script'
@@ -59,7 +61,9 @@ export default function RootLayout({
           />
       </head>
       <body>
+
       <Header />
+      <VerticalNav title={"V"} />
 
         {/* Include the Header component */}
         {/* Layout UI */}

@@ -1,9 +1,14 @@
 import Image from "next/image";
 
+import { StickyHeader } from "@/components/stickyHeader"
+
 export default function Home() {
   return (
-    <main className="z-10 flex min-h-screen w-full flex-col items-center justify-center py-32">
+    <main className="z-1 flex min-h-screen w-full flex-col items-center justify-center py-32">
       <div className="mx-2 sm:mx-4 lg:mx-32 xl:mx-64">
+
+      <StickyHeader title={"Robin Mofakham"} />
+
         <h1 className="">about me</h1>
         <p className="italic text-lg font-semibold text-slate-400">
           {"//"}<span className="mx-4">Technical</span>

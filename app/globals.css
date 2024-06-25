@@ -52,7 +52,7 @@ body {
     margin: 10px;
 
   }
-  li {
+  ul.list li {
     list-style: inside;
   }
 

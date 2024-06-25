@@ -43,7 +43,7 @@ export default function Header() {
   }
 
   return (
-    <header className="z-10 sticky top-0 bg-[#4A5D5E] sm:flex sm:justify-between sm:items-center lg:px-32">
+    <header className="z-5 sticky top-0 bg-[#4A5D5E] sm:flex sm:justify-between sm:items-center lg:px-32">
 
       {/*<!-- mobile button and logo -->*/}
       <div className="flex items-center justify-between p-0">
@@ -101,6 +101,7 @@ export default function Header() {
           </div>
         </nav>
       </div>
+
     </header>
 
   );
